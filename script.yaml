@@ -1,0 +1,13 @@
+---
+- name: execute script
+  hosts: servers
+  vars:
+    entry: /home/vagrant
+  tasks:
+    - name: Exécuter le script sur le serveur
+      ansible.builtin.script: script.sh "{{entry}}"
+      register: script_output
+      
+    - name: Afficher la sortie du script
+      debug:
+        var: script_output.stdout_lines
