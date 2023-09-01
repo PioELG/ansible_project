@@ -1,13 +1,32 @@
 ---
 - name: execute script
-  hosts: servers
+  hosts: srv1
   vars:
     entry: /home/vagrant
   tasks:
     - name: Exécuter le script sur le serveur
       ansible.builtin.script: script.sh "{{entry}}"
       register: script_output
-      
+
     - name: Afficher la sortie du script
       debug:
         var: script_output.stdout_lines
+
+    -  name: faire un fetch
+       ansible.builtin.fetch:
+         src: /home/vagrant/test1
+         dest: /home/vagrant/ansible_project/
+         flat: yes
+
+    - name: Copy the file from mwiapp01 to mwiapp02 using Method Pull
+      tags: sync-pull
+      ansible.posix.synchronize:
+        src: "{{ prod_directory }}"
+        dest: "{{ backup_directory}}"
+        mode: pull
+      delegate_to: srv2
+      register: syncfile
+      
+    
+
+    
