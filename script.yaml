@@ -21,12 +21,28 @@
     - name: Copy the file from mwiapp01 to mwiapp02 using Method Pull
       tags: sync-pull
       ansible.posix.synchronize:
-        src: "{{ prod_directory }}"
+        src: "{{ prod_directory + '/*' }}"
         dest: "{{ backup_directory}}"
         mode: pull
       delegate_to: srv2
       register: syncfile
+
+    - name: find all files that are older than 10 min
+      find:
+        paths: "{{prod_directory}}"
+        age: 10m
+        recurse: yes
+      register: filesOlderThan10
+      when: syncfile.changed== True
+
+    - name: remove older than 10
+      file:
+        path: "{{ item.path }}" 
+        state: absent
+      with_items: "{{ filesOlderThan10.files }}"
+      when: syncfile.changed== True
+
       
-    
+
 
     
