@@ -12,11 +12,6 @@
       debug:
         var: script_output.stdout_lines
 
-    -  name: faire un fetch
-       ansible.builtin.fetch:
-         src: /home/vagrant/ji
-         dest: /home/vagrant/ansible_project/
-         flat: yes
 
     - name: Copy the file from srv1 to srv2 using Method Pull
       tags: sync-pull
