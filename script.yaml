@@ -25,7 +25,7 @@
     - name: find all files that are older than 10 min
       find:
         paths: "{{prod_directory}}"
-        age: 2m
+        age: 50m
         recurse: yes
       register: filesOlderThan10
       when: syncfile.changed== True
