@@ -14,11 +14,11 @@
 
     -  name: faire un fetch
        ansible.builtin.fetch:
-         src: /home/vagrant/test1
+         src: /home/vagrant/ji
          dest: /home/vagrant/ansible_project/
          flat: yes
 
-    - name: Copy the file from mwiapp01 to mwiapp02 using Method Pull
+    - name: Copy the file from srv1 to srv2 using Method Pull
       tags: sync-pull
       ansible.posix.synchronize:
         src: "{{ prod_directory + '/*' }}"
@@ -30,7 +30,7 @@
     - name: find all files that are older than 10 min
       find:
         paths: "{{prod_directory}}"
-        age: 10m
+        age: 2m
         recurse: yes
       register: filesOlderThan10
       when: syncfile.changed== True

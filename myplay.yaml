@@ -1,0 +1,24 @@
+---
+- name: execute script
+  hosts: srv1
+  vars:
+    entry: /home/vagrant
+  tasks:
+    - name: Exécuter le script sur le serveur
+      ansible.builtin.script: script.sh "{{entry}}"
+      register: script_output
+    
+    -  name: faire un fetch
+       ansible.builtin.fetch:
+         src: /home/vagrant/bjr1
+         dest: /home/vagrant/ansible_project/
+         flat: yes
+
+- name: doing copy
+  hosts: srv2
+  tasks:
+    -  name: faire une copie
+       ansible.builtin.copy:
+         src: /home/vagrant/ansible_project
+         dest: /home/vagrant/
+         
