@@ -1,0 +1,11 @@
+---
+- name: execute script
+  hosts: srv2
+  vars:
+    entry: /home/vagrant
+  tasks:
+    - name: Exécuter le script sur le serveur
+      ansible.builtin.debug: 
+       msg: Hello
+
+
