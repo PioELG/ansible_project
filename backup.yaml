@@ -1,18 +1,8 @@
 ---
 - name: execute script
   hosts: srv1
-  vars:
-    entry: /home/vagrant
   tasks:
-    - name: Exécuter le script sur le serveur
-      ansible.builtin.script: script.sh "{{entry}}"
-      register: script_output
-
-    - name: Afficher la sortie du script
-      debug:
-        var: script_output.stdout_lines
-
-
+    
     - name: Copy the file from srv1 to srv2 using Method Pull
       tags: sync-pull
       ansible.posix.synchronize:
@@ -30,7 +20,7 @@
       register: filesOlderThan10
       when: syncfile.changed== True
 
-    - name: remove older than 10
+    - name: remove files older than 10
       file:
         path: "{{ item.path }}" 
         state: absent
