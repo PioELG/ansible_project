@@ -1,0 +1,9 @@
+servers:
+  hosts:
+    srv1:
+      ansible_host: 192.168.224.3
+      ansible_user: vagrant
+
+    srv2:
+      ansible_host: 192.168.224.4
+      ansible_user: vagrant
