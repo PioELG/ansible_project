@@ -9,6 +9,6 @@ servers:
       ansible_user: vagrant
 
   vars:
-    prod_directory: /home/vagrant/yo
-    backup_directory: /home/vagrant/
+    prod_directory: /home/vagrant/data/doss1
+    backup_directory: /home/vagrant/backup/doss1
   
