@@ -1,0 +1,9 @@
+---
+- name: execute script
+  hosts: srv1
+  tasks:
+  - name: Check system information
+    shell: somescript.sh >> somelog.txt
+    args:
+     chdir: /home/vagrant
+     creates: somelog.txt

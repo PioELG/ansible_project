@@ -1,0 +1,11 @@
+---
+- name: execute script
+  hosts: srv1
+  tasks:
+  
+    - name: Return motd to registered var
+      ansible.builtin.command: ping 192.168.224.3
+      register: mymotd
+    - name: See results
+      debug:
+        msg: "{{ mymotd.stdout }}"
