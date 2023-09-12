@@ -58,7 +58,7 @@
        username: "{{username}}"
        password: "{{password}}"
        from: admin@ansible.bj (Ansible Support)
-       to: "{{  email_to }}"
+       to: "{{ email_to }}"
        cc: "{{ email_cc }}"
        subject: "Backup"
        body: "{{ lookup('template','email.html.j2') }}"
