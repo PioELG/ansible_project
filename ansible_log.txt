@@ -1,0 +1,144 @@
+2023-09-11 15:25:17,102 p=24896 u=vagrant n=ansible | PLAY [execute script] ******************************************************************************************************************************
+2023-09-11 15:25:17,123 p=24896 u=vagrant n=ansible | TASK [Gathering Facts] *****************************************************************************************************************************
+2023-09-11 15:25:19,424 p=24896 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 15:25:19,485 p=24896 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] *******************************************************************************************
+2023-09-11 15:25:21,270 p=24896 u=vagrant n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 15:25:21,294 p=24896 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ***************************************************************************************************
+2023-09-11 15:25:21,324 p=24896 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 15:25:21,339 p=24896 u=vagrant n=ansible | TASK [remove files older than 10] ******************************************************************************************************************
+2023-09-11 15:25:21,360 p=24896 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 15:25:21,376 p=24896 u=vagrant n=ansible | TASK [Affiche temps] *******************************************************************************************************************************
+2023-09-11 15:25:21,414 p=24896 u=vagrant n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-11T15:25:18Z"
+}
+2023-09-11 15:25:21,441 p=24896 u=vagrant n=ansible | TASK [Ansible | Creating a file with content] ******************************************************************************************************
+2023-09-11 15:25:21,460 p=24896 u=vagrant n=ansible | fatal: [srv1 -> srv2]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'files'\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 35, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: \"Ansible | Creating a file with content\"\n      ^ here\n"}
+2023-09-11 15:25:21,465 p=24896 u=vagrant n=ansible | PLAY RECAP *****************************************************************************************************************************************
+2023-09-11 15:25:21,466 p=24896 u=vagrant n=ansible | srv1                       : ok=3    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2023-09-11 16:04:08,421 p=27315 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:04:08,447 p=27315 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:04:10,670 p=27315 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:04:10,717 p=27315 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:04:12,545 p=27315 u=vagrant n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:04:12,563 p=27315 u=vagrant n=ansible | TASK [Afficher le nombre de fichiers copiés] ************************************************************************
+2023-09-11 16:04:12,605 p=27315 u=vagrant n=ansible | ok: [srv1] => {
+    "syncfile.files_copied": "VARIABLE IS NOT DEFINED!"
+}
+2023-09-11 16:04:12,625 p=27315 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:04:12,649 p=27315 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:04:12,669 p=27315 u=vagrant n=ansible | TASK [remove files older than 10] ***********************************************************************************
+2023-09-11 16:04:12,690 p=27315 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:04:12,706 p=27315 u=vagrant n=ansible | TASK [Affiche temps] ************************************************************************************************
+2023-09-11 16:04:12,763 p=27315 u=vagrant n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-11T16:04:10Z"
+}
+2023-09-11 16:04:12,782 p=27315 u=vagrant n=ansible | TASK [Envoyer un email si aucun fichier] ****************************************************************************
+2023-09-11 16:04:12,806 p=27315 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:04:12,854 p=27315 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:04:12,854 p=27315 u=vagrant n=ansible | srv1                       : ok=4    changed=0    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+2023-09-11 16:05:21,120 p=27477 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:05:21,141 p=27477 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:05:24,185 p=27477 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:05:24,260 p=27477 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:05:25,978 p=27477 u=vagrant n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:05:25,995 p=27477 u=vagrant n=ansible | TASK [Afficher le nombre de fichiers copiés] ************************************************************************
+2023-09-11 16:05:26,030 p=27477 u=vagrant n=ansible | ok: [srv1] => {
+    "syncfile.files_copied": "VARIABLE IS NOT DEFINED!"
+}
+2023-09-11 16:05:26,042 p=27477 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:05:26,484 p=27477 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:05:26,495 p=27477 u=vagrant n=ansible | TASK [remove files older than 10] ***********************************************************************************
+2023-09-11 16:05:26,958 p=27477 u=vagrant n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/lepere', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512031, 'dev': 2049, 'nlink': 1, 'atime': 1694431728.815973, 'mtime': 1694431728.815973, 'ctime': 1694431728.815973, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-11 16:05:26,974 p=27477 u=vagrant n=ansible | TASK [Affiche temps] ************************************************************************************************
+2023-09-11 16:05:27,046 p=27477 u=vagrant n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-11T16:05:23Z"
+}
+2023-09-11 16:05:27,069 p=27477 u=vagrant n=ansible | TASK [Envoyer un email si aucun fichier] ****************************************************************************
+2023-09-11 16:05:27,093 p=27477 u=vagrant n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'host' is undefined\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 42, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: Envoyer un email si aucun fichier\n      ^ here\n"}
+2023-09-11 16:05:27,095 p=27477 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:05:27,096 p=27477 u=vagrant n=ansible | srv1                       : ok=6    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-09-11 16:25:27,539 p=28659 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:25:27,563 p=28659 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:25:29,579 p=28659 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:25:29,626 p=28659 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:25:31,348 p=28659 u=vagrant n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:25:31,373 p=28659 u=vagrant n=ansible | TASK [Afficher le nombre de fichiers copiés] ************************************************************************
+2023-09-11 16:25:31,455 p=28659 u=vagrant n=ansible | ok: [srv1] => {
+    "syncfile.files_copied": "VARIABLE IS NOT DEFINED!"
+}
+2023-09-11 16:25:31,471 p=28659 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:25:31,491 p=28659 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:25:31,511 p=28659 u=vagrant n=ansible | TASK [remove files older than 10] ***********************************************************************************
+2023-09-11 16:25:31,530 p=28659 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:25:31,544 p=28659 u=vagrant n=ansible | TASK [counting files] ***********************************************************************************************
+2023-09-11 16:25:31,594 p=28659 u=vagrant n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'files'\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 35, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: counting files\n      ^ here\n"}
+2023-09-11 16:25:31,597 p=28659 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:25:31,597 p=28659 u=vagrant n=ansible | srv1                       : ok=3    changed=0    unreachable=0    failed=1    skipped=2    rescued=0    ignored=0   
+2023-09-11 16:26:27,634 p=28820 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:26:27,652 p=28820 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:26:29,047 p=28820 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:26:29,085 p=28820 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:26:30,175 p=28820 u=vagrant n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:26:30,194 p=28820 u=vagrant n=ansible | TASK [Afficher le nombre de fichiers copiés] ************************************************************************
+2023-09-11 16:26:30,268 p=28820 u=vagrant n=ansible | ok: [srv1] => {
+    "syncfile.files_copied": "VARIABLE IS NOT DEFINED!"
+}
+2023-09-11 16:26:30,293 p=28820 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:26:30,782 p=28820 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:26:30,796 p=28820 u=vagrant n=ansible | TASK [remove files older than 10] ***********************************************************************************
+2023-09-11 16:26:31,246 p=28820 u=vagrant n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/ju', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 543108, 'dev': 2049, 'nlink': 1, 'atime': 1694448302.319694, 'mtime': 1694448302.319694, 'ctime': 1694448302.319694, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-11 16:26:31,581 p=28820 u=vagrant n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/an', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 543116, 'dev': 2049, 'nlink': 1, 'atime': 1694448307.4316938, 'mtime': 1694448307.4316938, 'ctime': 1694448307.4316938, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-11 16:26:31,608 p=28820 u=vagrant n=ansible | TASK [counting files] ***********************************************************************************************
+2023-09-11 16:26:31,725 p=28820 u=vagrant n=ansible | ok: [srv1] => {
+    "2": "2"
+}
+2023-09-11 16:26:31,740 p=28820 u=vagrant n=ansible | TASK [Affiche temps] ************************************************************************************************
+2023-09-11 16:26:31,779 p=28820 u=vagrant n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-11T16:26:28Z"
+}
+2023-09-11 16:26:31,794 p=28820 u=vagrant n=ansible | TASK [Envoyer un email si aucun fichier] ****************************************************************************
+2023-09-11 16:26:31,816 p=28820 u=vagrant n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'host' is undefined\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 44, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: Envoyer un email si aucun fichier\n      ^ here\n"}
+2023-09-11 16:26:31,818 p=28820 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:26:31,819 p=28820 u=vagrant n=ansible | srv1                       : ok=7    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-09-11 16:32:39,861 p=29288 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:32:39,886 p=29288 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:32:42,029 p=29288 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:32:42,078 p=29288 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:32:43,635 p=29288 u=vagrant n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:32:43,661 p=29288 u=vagrant n=ansible | TASK [Afficher le nombre de fichiers copiés] ************************************************************************
+2023-09-11 16:32:43,694 p=29288 u=vagrant n=ansible | ok: [srv1] => {
+    "syncfile.files_copied": "VARIABLE IS NOT DEFINED!"
+}
+2023-09-11 16:32:43,715 p=29288 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:32:43,736 p=29288 u=vagrant n=ansible | skipping: [srv1]
+2023-09-11 16:32:43,755 p=29288 u=vagrant n=ansible | TASK [counting files] ***********************************************************************************************
+2023-09-11 16:32:43,810 p=29288 u=vagrant n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'files'\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 29, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: counting files\n      ^ here\n"}
+2023-09-11 16:32:43,812 p=29288 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:32:43,813 p=29288 u=vagrant n=ansible | srv1                       : ok=3    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2023-09-11 16:33:32,313 p=29420 u=vagrant n=ansible | PLAY [execute script] ***********************************************************************************************
+2023-09-11 16:33:32,339 p=29420 u=vagrant n=ansible | TASK [Gathering Facts] **********************************************************************************************
+2023-09-11 16:33:33,871 p=29420 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:33:33,926 p=29420 u=vagrant n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ************************************************************
+2023-09-11 16:33:35,319 p=29420 u=vagrant n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:33:35,361 p=29420 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:33:36,005 p=29420 u=vagrant n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-11 16:33:36,024 p=29420 u=vagrant n=ansible | TASK [counting files] ***********************************************************************************************
+2023-09-11 16:33:36,122 p=29420 u=vagrant n=ansible | ok: [srv1] => {
+    "1": "1"
+}
+2023-09-11 16:33:36,142 p=29420 u=vagrant n=ansible | TASK [find all files that are older than 10 min] ********************************************************************
+2023-09-11 16:33:36,524 p=29420 u=vagrant n=ansible | ok: [srv1]
+2023-09-11 16:33:36,559 p=29420 u=vagrant n=ansible | TASK [remove files older than 10] ***********************************************************************************
+2023-09-11 16:33:37,065 p=29420 u=vagrant n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/huit', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512031, 'dev': 2049, 'nlink': 1, 'atime': 1694449579.0956423, 'mtime': 1694449579.0956423, 'ctime': 1694449579.0956423, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-11 16:33:37,081 p=29420 u=vagrant n=ansible | TASK [counting files] ***********************************************************************************************
+2023-09-11 16:33:37,177 p=29420 u=vagrant n=ansible | ok: [srv1] => {
+    "1": "1"
+}
+2023-09-11 16:33:37,194 p=29420 u=vagrant n=ansible | TASK [Affiche temps] ************************************************************************************************
+2023-09-11 16:33:37,275 p=29420 u=vagrant n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-11T16:33:33Z"
+}
+2023-09-11 16:33:37,298 p=29420 u=vagrant n=ansible | TASK [Envoyer un email si aucun fichier] ****************************************************************************
+2023-09-11 16:33:37,334 p=29420 u=vagrant n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'host' is undefined\n\nThe error appears to be in '/home/vagrant/ansible_project/backup_origin.yaml': line 54, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: Envoyer un email si aucun fichier\n      ^ here\n"}
+2023-09-11 16:33:37,337 p=29420 u=vagrant n=ansible | PLAY RECAP **********************************************************************************************************
+2023-09-11 16:33:37,338 p=29420 u=vagrant n=ansible | srv1                       : ok=8    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   

@@ -1,0 +1,71 @@
+---
+- name: execute script
+  hosts: srv1
+  tasks:
+    
+    - name: Copy the file from srv1 to srv2 using Method Pull
+      tags: sync-pull
+      ansible.posix.synchronize:
+        src: "{{ prod_directory +'/*' }}"
+        dest: "{{ backup_directory}}"
+        mode: pull
+      delegate_to: srv2
+      register: syncfile
+
+  
+    - name: find all files that are older than 10 min
+      find:
+        paths: "{{backup_directory}}"
+        age: -30s
+        recurse: yes
+      register: filesyoungerThan30
+      delegate_to: srv2
+      when: syncfile.changed== True
+
+    - name: counting files
+      ansible.builtin.debug:
+         var: "{{filesyoungerThan30.files|length}}"
+
+    - name: find all files that are older than 10 min
+      find:
+        paths: "{{prod_directory}}"
+        age: 2m
+        recurse: yes
+      register: filesOlderThan10
+      when: syncfile.changed== True
+    
+
+    - name: remove files older than 10
+      file:
+        path: "{{ item.path }}" 
+        state: absent
+      with_items: "{{ filesOlderThan10.files }}"
+      when: syncfile.changed== True
+
+    - name: counting files
+      ansible.builtin.debug:
+        var: "{{filesOlderThan10.files|length}}"
+
+    - name: Affiche temps
+      ansible.builtin.debug: 
+        var: ansible_date_time.iso8601
+             
+    
+    - name: Envoyer un email si aucun fichier
+      mail:
+       host: "{{host}}"
+       port: "{{port}}"
+       username: "{{username}}"
+       password: "{{password}}"
+       from: admin@ansible.bj (Ansible Support)
+       to: "{{  email_to }}"
+       cc: "{{ email_cc }}"
+       subject: "Backup"
+       body: "{{ lookup('template','email.html.j2') }}"
+       subtype: html
+       charset: utf8
+      when: syncfile.changed== True  
+        
+
+
+    
