@@ -16,7 +16,7 @@
     - name: find all files that are older than 10 min
       find:
         paths: "{{backup_directory}}"
-        age: -1m
+        age: - 30s
         recurse: yes
       register: filesyoungerThan30
       delegate_to: srv2
