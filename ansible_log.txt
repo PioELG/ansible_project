@@ -406,3 +406,16 @@
 2023-09-12 14:38:03,753 p=18317 u=root n=ansible | ok: [srv1]
 2023-09-12 14:38:03,807 p=18317 u=root n=ansible | PLAY RECAP *********************************************************************
 2023-09-12 14:38:03,809 p=18317 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-09-12 14:45:52,770 p=19249 u=root n=ansible | [WARNING]: Found variable using reserved name: port
+
+2023-09-12 14:45:52,774 p=19249 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-12 14:45:52,832 p=19249 u=root n=ansible | TASK [Gathering Facts] *********************************************************
+2023-09-12 14:45:56,842 p=19249 u=root n=ansible | ok: [srv1]
+2023-09-12 14:45:56,953 p=19249 u=root n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ***********************
+2023-09-12 14:46:00,661 p=19249 u=root n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-12 14:46:00,718 p=19249 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-12 14:46:00,764 p=19249 u=root n=ansible | skipping: [srv1]
+2023-09-12 14:46:00,797 p=19249 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-12 14:46:00,833 p=19249 u=root n=ansible | fatal: [srv1]: FAILED! => {"msg": "The conditional check 'filesyoungerThan30.exits' failed. The error was: error while evaluating conditional (filesyoungerThan30.exits): 'dict object' has no attribute 'exits'\n\nThe error appears to be in '/tmp/semaphore/repository_1_7/backup_origin.yaml': line 25, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: counting files\n      ^ here\n"}
+2023-09-12 14:46:00,837 p=19249 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-12 14:46:00,838 p=19249 u=root n=ansible | srv1                       : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   

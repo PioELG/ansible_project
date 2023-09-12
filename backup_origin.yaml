@@ -25,7 +25,7 @@
     - name: counting files
       ansible.builtin.debug:
          var: "{{filesyoungerThan30.files|length}}"
-      when: filesyoungerThan30.exits
+      when: filesyoungerThan30 is defined
 
     - name: find all files that are older than 10 min
       find:
