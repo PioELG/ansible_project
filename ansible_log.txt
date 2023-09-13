@@ -492,3 +492,33 @@
 2023-09-12 15:00:59,354 p=20524 u=root n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'files'\n\nThe error appears to be in '/tmp/semaphore/repository_1_7/backup_origin.yaml': line 25, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: counting files\n      ^ here\n"}
 2023-09-12 15:00:59,361 p=20524 u=root n=ansible | PLAY RECAP *********************************************************************
 2023-09-12 15:00:59,366 p=20524 u=root n=ansible | srv1                       : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2023-09-12 15:28:13,351 p=21759 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  block sequence entries are not allowed in this context
+
+The error appears to be in '/tmp/semaphore/repository_1_7/backup_origin.yaml': line 19, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        paths: "{{backup_directory}}"
+        age: - 30s
+             ^ here
+
+2023-09-13 15:35:49,004 p=4056 u=root n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  block sequence entries are not allowed in this context
+
+The error appears to be in '/tmp/semaphore/repository_1_7/backup_origin.yaml': line 19, column 14, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        paths: "{{backup_directory}}"
+        age: - 30s
+             ^ here
+
