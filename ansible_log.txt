@@ -745,3 +745,135 @@ The offending line appears to be:
 2023-09-13 16:15:57,891 p=5996 u=root n=ansible | ok: [srv1]
 2023-09-13 16:15:57,930 p=5996 u=root n=ansible | PLAY RECAP *********************************************************************
 2023-09-13 16:15:57,931 p=5996 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-09-14 11:19:23,301 p=17946 u=root n=ansible | ansible-playbook [core 2.12.10]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/tmp/semaphore/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /tmp/semaphore/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.8.10 (default, May 26 2023, 14:05:08) [GCC 9.4.0]
+  jinja version = 2.10.1
+  libyaml = True
+2023-09-14 11:19:23,301 p=17946 u=root n=ansible | Using /etc/ansible/ansible.cfg as config file
+2023-09-14 11:19:23,305 p=17946 u=root n=ansible | setting up inventory plugins
+2023-09-14 11:19:23,325 p=17946 u=root n=ansible | host_list declined parsing /tmp/semaphore/repository_1_7/inventory2.yaml as it did not pass its verify_file() method
+2023-09-14 11:19:23,326 p=17946 u=root n=ansible | script declined parsing /tmp/semaphore/repository_1_7/inventory2.yaml as it did not pass its verify_file() method
+2023-09-14 11:19:23,339 p=17946 u=root n=ansible | toml declined parsing /tmp/semaphore/repository_1_7/inventory2.yaml as it did not pass its verify_file() method
+2023-09-14 11:19:23,340 p=17946 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with auto plugin: We were unable to read either as JSON nor YAML, these are the
+errors we got from each: JSON: Expecting value: line 1 column 1 (char 0)
+Syntax Error while loading YAML.   found unacceptable key (unhashable type:
+'AnsibleMapping')  The error appears to be in
+'/tmp/semaphore/repository_1_7/inventory2.yaml': line 4, column 22, but may be
+elsewhere in the file depending on the exact syntax problem.  The offending
+line appears to be:      srv1:       ansible_host: {{ip1}}
+^ here We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they start a
+value. For instance:      with_items:       - {{ foo }}  Should be written as:
+with_items:       - "{{ foo }}"
+
+2023-09-14 11:19:23,341 p=17946 u=root n=ansible |   File "/usr/lib/python3/dist-packages/ansible/inventory/manager.py", line 290, in parse_source
+    plugin.parse(self._inventory, self._loader, source, cache=cache)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/inventory/auto.py", line 40, in parse
+    config_data = loader.load_from_file(path, cache=False)
+  File "/usr/lib/python3/dist-packages/ansible/parsing/dataloader.py", line 97, in load_from_file
+    parsed_data = self.load(data=file_data, file_name=file_name, show_content=show_content, json_only=json_only)
+  File "/usr/lib/python3/dist-packages/ansible/parsing/dataloader.py", line 80, in load
+    return from_yaml(data, file_name, show_content, self._vault.secrets, json_only=json_only)
+  File "/usr/lib/python3/dist-packages/ansible/parsing/utils/yaml.py", line 82, in from_yaml
+    _handle_error(json_exc, yaml_exc, file_name, show_content)
+  File "/usr/lib/python3/dist-packages/ansible/parsing/utils/yaml.py", line 43, in _handle_error
+    raise AnsibleParserError(n_err_msg, obj=err_obj, show_content=show_content, orig_exc=yaml_exc)
+
+2023-09-14 11:19:23,342 p=17946 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with yaml plugin: We were unable to read either as JSON nor YAML, these are the
+errors we got from each: JSON: Expecting value: line 1 column 1 (char 0)
+Syntax Error while loading YAML.   found unacceptable key (unhashable type:
+'AnsibleMapping')  The error appears to be in
+'/tmp/semaphore/repository_1_7/inventory2.yaml': line 4, column 22, but may be
+elsewhere in the file depending on the exact syntax problem.  The offending
+line appears to be:      srv1:       ansible_host: {{ip1}}
+^ here We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they start a
+value. For instance:      with_items:       - {{ foo }}  Should be written as:
+with_items:       - "{{ foo }}"
+
+2023-09-14 11:19:23,343 p=17946 u=root n=ansible |   File "/usr/lib/python3/dist-packages/ansible/inventory/manager.py", line 290, in parse_source
+    plugin.parse(self._inventory, self._loader, source, cache=cache)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/inventory/yaml.py", line 105, in parse
+    raise AnsibleParserError(e)
+
+2023-09-14 11:19:23,343 p=17946 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with ini plugin: Invalid host pattern 'servers:' supplied, ending in ':' is not
+allowed, this character is reserved to provide a port.
+
+2023-09-14 11:19:23,344 p=17946 u=root n=ansible |   File "/usr/lib/python3/dist-packages/ansible/inventory/manager.py", line 290, in parse_source
+    plugin.parse(self._inventory, self._loader, source, cache=cache)
+  File "/usr/lib/python3/dist-packages/ansible/plugins/inventory/ini.py", line 136, in parse
+    raise AnsibleParserError(e)
+
+2023-09-14 11:19:23,344 p=17946 u=root n=ansible | [WARNING]: Unable to parse /tmp/semaphore/repository_1_7/inventory2.yaml as an
+inventory source
+
+2023-09-14 11:19:23,345 p=17946 u=root n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2023-09-14 11:19:23,366 p=17946 u=root n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+2023-09-14 11:19:23,686 p=17946 u=root n=ansible | Loading collection ansible.posix from /usr/lib/python3/dist-packages/ansible_collections/ansible/posix
+2023-09-14 11:19:23,759 p=17946 u=root n=ansible | redirecting (type: modules) ansible.builtin.mail to community.general.mail
+2023-09-14 11:19:23,788 p=17946 u=root n=ansible | Loading collection community.general from /usr/lib/python3/dist-packages/ansible_collections/community/general
+2023-09-14 11:19:23,803 p=17946 u=root n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2023-09-14 11:19:23,823 p=17946 u=root n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2023-09-14 11:19:23,823 p=17946 u=root n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2023-09-14 11:19:23,823 p=17946 u=root n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2023-09-14 11:19:23,824 p=17946 u=root n=ansible | PLAYBOOK: backup_origin.yaml ***************************************************
+2023-09-14 11:19:23,825 p=17946 u=root n=ansible | 1 plays in backup_origin.yaml
+2023-09-14 11:19:23,827 p=17946 u=root n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: srv1
+
+2023-09-14 11:19:23,828 p=17946 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-14 11:19:23,829 p=17946 u=root n=ansible | skipping: no hosts matched
+2023-09-14 11:19:23,829 p=17946 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-14 11:20:03,316 p=17986 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with auto plugin: We were unable to read either as JSON nor YAML, these are the
+errors we got from each: JSON: Expecting value: line 1 column 1 (char 0)
+Syntax Error while loading YAML.   found unacceptable key (unhashable type:
+'AnsibleMapping')  The error appears to be in
+'/tmp/semaphore/repository_1_7/inventory2.yaml': line 4, column 22, but may be
+elsewhere in the file depending on the exact syntax problem.  The offending
+line appears to be:      srv1:       ansible_host: {{ip1}}
+^ here We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they start a
+value. For instance:      with_items:       - {{ foo }}  Should be written as:
+with_items:       - "{{ foo }}"
+
+2023-09-14 11:20:03,319 p=17986 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with yaml plugin: We were unable to read either as JSON nor YAML, these are the
+errors we got from each: JSON: Expecting value: line 1 column 1 (char 0)
+Syntax Error while loading YAML.   found unacceptable key (unhashable type:
+'AnsibleMapping')  The error appears to be in
+'/tmp/semaphore/repository_1_7/inventory2.yaml': line 4, column 22, but may be
+elsewhere in the file depending on the exact syntax problem.  The offending
+line appears to be:      srv1:       ansible_host: {{ip1}}
+^ here We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they start a
+value. For instance:      with_items:       - {{ foo }}  Should be written as:
+with_items:       - "{{ foo }}"
+
+2023-09-14 11:20:03,320 p=17986 u=root n=ansible | [WARNING]:  * Failed to parse /tmp/semaphore/repository_1_7/inventory2.yaml
+with ini plugin: Invalid host pattern 'servers:' supplied, ending in ':' is not
+allowed, this character is reserved to provide a port.
+
+2023-09-14 11:20:03,322 p=17986 u=root n=ansible | [WARNING]: Unable to parse /tmp/semaphore/repository_1_7/inventory2.yaml as an
+inventory source
+
+2023-09-14 11:20:03,324 p=17986 u=root n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2023-09-14 11:20:03,346 p=17986 u=root n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+2023-09-14 11:20:03,551 p=17986 u=root n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: srv1
+
+2023-09-14 11:20:03,552 p=17986 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-14 11:20:03,553 p=17986 u=root n=ansible | skipping: no hosts matched
+2023-09-14 11:20:03,553 p=17986 u=root n=ansible | PLAY RECAP *********************************************************************
