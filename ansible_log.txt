@@ -640,3 +640,108 @@ The offending line appears to be:
 2023-09-13 15:58:38,646 p=5162 u=root n=ansible | ok: [srv1]
 2023-09-13 15:58:38,685 p=5162 u=root n=ansible | PLAY RECAP *********************************************************************
 2023-09-13 15:58:38,687 p=5162 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-09-13 16:04:29,137 p=5432 u=root n=ansible | [WARNING]: Found variable using reserved name: port
+
+2023-09-13 16:04:29,139 p=5432 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-13 16:04:29,164 p=5432 u=root n=ansible | TASK [Gathering Facts] *********************************************************
+2023-09-13 16:04:32,118 p=5432 u=root n=ansible | ok: [srv1]
+2023-09-13 16:04:32,168 p=5432 u=root n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ***********************
+2023-09-13 16:04:34,397 p=5432 u=root n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:04:34,433 p=5432 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:04:34,475 p=5432 u=root n=ansible | skipping: [srv1]
+2023-09-13 16:04:34,505 p=5432 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:04:34,571 p=5432 u=root n=ansible | fatal: [srv1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'files'\n\nThe error appears to be in '/tmp/semaphore/repository_1_7/backup_origin.yaml': line 25, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n    - name: counting files\n      ^ here\n"}
+2023-09-13 16:04:34,577 p=5432 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-13 16:04:34,586 p=5432 u=root n=ansible | srv1                       : ok=2    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2023-09-13 16:07:03,760 p=5553 u=root n=ansible | [WARNING]: Found variable using reserved name: port
+
+2023-09-13 16:07:03,761 p=5553 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-13 16:07:03,781 p=5553 u=root n=ansible | TASK [Gathering Facts] *********************************************************
+2023-09-13 16:07:06,353 p=5553 u=root n=ansible | ok: [srv1]
+2023-09-13 16:07:06,406 p=5553 u=root n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ***********************
+2023-09-13 16:07:08,978 p=5553 u=root n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:07:09,021 p=5553 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:07:09,892 p=5553 u=root n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:07:09,917 p=5553 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:07:10,091 p=5553 u=root n=ansible | ok: [srv1] => {
+    "2": "2"
+}
+2023-09-13 16:07:10,125 p=5553 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:07:10,708 p=5553 u=root n=ansible | ok: [srv1]
+2023-09-13 16:07:10,731 p=5553 u=root n=ansible | TASK [remove files older than 10] **********************************************
+2023-09-13 16:07:11,549 p=5553 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1114', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512031, 'dev': 2049, 'nlink': 1, 'atime': 1694620682.4776163, 'mtime': 1694620682.4776163, 'ctime': 1694620682.4776163, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:07:12,041 p=5553 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1115', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 543108, 'dev': 2049, 'nlink': 1, 'atime': 1694620685.277616, 'mtime': 1694620685.277616, 'ctime': 1694620685.277616, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:07:12,523 p=5553 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1112', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512015, 'dev': 2049, 'nlink': 1, 'atime': 1694620677.7616165, 'mtime': 1694620677.7616165, 'ctime': 1694620677.7616165, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:07:13,036 p=5553 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1113', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512016, 'dev': 2049, 'nlink': 1, 'atime': 1694620679.9496164, 'mtime': 1694620679.9496164, 'ctime': 1694620679.9496164, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:07:13,527 p=5553 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1111', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512013, 'dev': 2049, 'nlink': 1, 'atime': 1694620674.4336166, 'mtime': 1694620674.4336166, 'ctime': 1694620674.4336166, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:07:13,551 p=5553 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:07:13,634 p=5553 u=root n=ansible | ok: [srv1] => {
+    "5": "5"
+}
+2023-09-13 16:07:13,660 p=5553 u=root n=ansible | TASK [Affiche temps] ***********************************************************
+2023-09-13 16:07:13,715 p=5553 u=root n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-13T16:07:06Z"
+}
+2023-09-13 16:07:13,743 p=5553 u=root n=ansible | TASK [Envoyer un email si aucun fichier] ***************************************
+2023-09-13 16:07:22,206 p=5553 u=root n=ansible | ok: [srv1]
+2023-09-13 16:07:22,247 p=5553 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-13 16:07:22,248 p=5553 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-09-13 16:11:08,910 p=5778 u=root n=ansible | [WARNING]: Found variable using reserved name: port
+
+2023-09-13 16:11:08,912 p=5778 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-13 16:11:08,947 p=5778 u=root n=ansible | TASK [Gathering Facts] *********************************************************
+2023-09-13 16:11:11,973 p=5778 u=root n=ansible | ok: [srv1]
+2023-09-13 16:11:12,025 p=5778 u=root n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ***********************
+2023-09-13 16:11:14,282 p=5778 u=root n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:11:14,315 p=5778 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:11:15,049 p=5778 u=root n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:11:15,075 p=5778 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:11:15,200 p=5778 u=root n=ansible | ok: [srv1] => {
+    "1": "1"
+}
+2023-09-13 16:11:15,226 p=5778 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:11:15,702 p=5778 u=root n=ansible | ok: [srv1]
+2023-09-13 16:11:15,724 p=5778 u=root n=ansible | TASK [remove files older than 10] **********************************************
+2023-09-13 16:11:16,379 p=5778 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1117', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 543116, 'dev': 2049, 'nlink': 1, 'atime': 1694621174.9775963, 'mtime': 1694621174.9775963, 'ctime': 1694621174.9775963, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:11:16,802 p=5778 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1116', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512014, 'dev': 2049, 'nlink': 1, 'atime': 1694621171.1455965, 'mtime': 1694621171.1455965, 'ctime': 1694621171.1455965, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:11:16,830 p=5778 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:11:16,970 p=5778 u=root n=ansible | ok: [srv1] => {
+    "2": "2"
+}
+2023-09-13 16:11:16,996 p=5778 u=root n=ansible | TASK [Affiche temps] ***********************************************************
+2023-09-13 16:11:17,046 p=5778 u=root n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-13T16:11:11Z"
+}
+2023-09-13 16:11:17,072 p=5778 u=root n=ansible | TASK [Envoyer un email si aucun fichier] ***************************************
+2023-09-13 16:11:37,776 p=5778 u=root n=ansible | ok: [srv1]
+2023-09-13 16:11:37,814 p=5778 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-13 16:11:37,815 p=5778 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-09-13 16:15:43,951 p=5996 u=root n=ansible | [WARNING]: Found variable using reserved name: port
+
+2023-09-13 16:15:43,953 p=5996 u=root n=ansible | PLAY [execute script] **********************************************************
+2023-09-13 16:15:43,979 p=5996 u=root n=ansible | TASK [Gathering Facts] *********************************************************
+2023-09-13 16:15:46,240 p=5996 u=root n=ansible | ok: [srv1]
+2023-09-13 16:15:46,285 p=5996 u=root n=ansible | TASK [Copy the file from srv1 to srv2 using Method Pull] ***********************
+2023-09-13 16:15:48,526 p=5996 u=root n=ansible | changed: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:15:48,596 p=5996 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:15:49,569 p=5996 u=root n=ansible | ok: [srv1 -> srv2(192.168.224.4)]
+2023-09-13 16:15:49,602 p=5996 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:15:49,777 p=5996 u=root n=ansible | ok: [srv1] => {
+    "10": "10"
+}
+2023-09-13 16:15:49,821 p=5996 u=root n=ansible | TASK [find all files that are older than 10 min] *******************************
+2023-09-13 16:15:50,513 p=5996 u=root n=ansible | ok: [srv1]
+2023-09-13 16:15:50,561 p=5996 u=root n=ansible | TASK [remove files older than 10] **********************************************
+2023-09-13 16:15:51,359 p=5996 u=root n=ansible | changed: [srv1] => (item={'path': '/home/vagrant/data/doss2/1000000000', 'mode': '0664', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 1000, 'gid': 1000, 'size': 0, 'inode': 512013, 'dev': 2049, 'nlink': 1, 'atime': 1694621433.281586, 'mtime': 1694621433.281586, 'ctime': 1694621433.281586, 'gr_name': 'vagrant', 'pw_name': 'vagrant', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': True, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+2023-09-13 16:15:51,395 p=5996 u=root n=ansible | TASK [counting files] **********************************************************
+2023-09-13 16:15:51,544 p=5996 u=root n=ansible | ok: [srv1] => {
+    "1": "1"
+}
+2023-09-13 16:15:51,584 p=5996 u=root n=ansible | TASK [Affiche temps] ***********************************************************
+2023-09-13 16:15:51,696 p=5996 u=root n=ansible | ok: [srv1] => {
+    "ansible_date_time.iso8601": "2023-09-13T16:15:45Z"
+}
+2023-09-13 16:15:51,728 p=5996 u=root n=ansible | TASK [Envoyer un email si aucun fichier] ***************************************
+2023-09-13 16:15:57,891 p=5996 u=root n=ansible | ok: [srv1]
+2023-09-13 16:15:57,930 p=5996 u=root n=ansible | PLAY RECAP *********************************************************************
+2023-09-13 16:15:57,931 p=5996 u=root n=ansible | srv1                       : ok=9    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
