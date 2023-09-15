@@ -3,7 +3,15 @@
   hosts: srv1
   tasks:
     
-    
+    - name: Copy the file from srv1 to srv2 using Method Pull
+      tags: sync-pull
+      ansible.posix.synchronize:
+        src: "{{ prod_directory +'/*' }}"
+        dest: "{{ backup_directory}}"
+        mode: pull
+      delegate_to: srv2
+      register: syncfile
+  
   
     - name: find all files that are older than 10 min
       find:
