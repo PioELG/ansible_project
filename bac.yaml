@@ -1,0 +1,62 @@
+---
+- name: execute script
+  hosts: srv1
+  tasks:
+    
+    
+  
+    - name: find all files that are older than 10 min
+      find:
+        paths: "{{backup_directory}}"
+        age: -1m
+        recurse: yes
+      register: filesyoungerThan30
+      delegate_to: srv2
+      
+
+    - name: counting files
+      ansible.builtin.debug:
+         var: "{{filesyoungerThan30.files|length}}"
+      
+
+    - name: find all files that are older than 10 min
+      find:
+        paths: "{{prod_directory}}"
+        age: "{{old_than}}"
+        recurse: yes
+      register: filesOlderThan10
+      
+
+    - name: remove files older than 10
+      file:
+        path: "{{ item.path }}" 
+        state: absent
+      with_items: "{{ filesOlderThan10.files }}"
+      
+    - name: counting files
+      ansible.builtin.debug:
+        
+
+    - name: Affiche temps
+      ansible.builtin.debug: 
+        var: ansible_date_time.iso8601
+             
+    
+    - name: Envoyer un email si aucun fichier
+      mail:
+       host: "{{host}}"
+       port: "{{port}}"
+       username: "{{username}}"
+       password: "{{password}}"
+       from: admin@ansible.bj (Ansible Support)
+       to: "{{ email_to }}"
+       cc: "{{ email_cc }}"
+       subject: "Backup"
+       body: "{{ lookup('template','email.html.j2') }}"
+       subtype: html
+       charset: utf8
+      when: syncfile.changed== True  
+        
+
+
+    
